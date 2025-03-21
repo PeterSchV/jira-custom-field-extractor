@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Field Extractor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Updated style for the message with light blue background */
+        .message {
+            background-color: #d6e4f0; /* light blue */
+            color: #155792; /* dark blue text */
+            border: 1px solid #c1d3e1;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        /* Additional style for the final message with green background */
+        .message-final {
+            background-color: #d4edda; /* light green */
+            color: #155724; /* dark green text */
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <h1>Custom Field Extractor</h1>
+    {% if message %}
+    <p class="message">{{ message }}</p>
+    {% endif %}
+    {% if message_final %}
+    <p class="message-final">{{ message_final }}</p>
+    {% endif %}
+    <form method="post" action="/run_script">
+        <label for="jira_url">Jira Instance URL:</label>
+        <input type="text" name="jira_url" required><br>
+
+        <label for="username">Username or Email:</label>
+        <input type="text" name="username" required><br>
+
+        <label for="api_token">API Token:</label>
+        <input type="password" name="api_token" required><br>
+
+        <input type="submit" value="Run Script">
+    </form>
+</body>
+</html>
